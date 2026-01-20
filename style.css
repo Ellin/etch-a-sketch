@@ -18,10 +18,6 @@
 
 .pixel {
     aspect-ratio: 1; /* make it square */
-    background-color: pink;
+    background-color: white;
     border: 1px solid black;
-}
-
-.ink {
-    background-color: black;
 }
