@@ -2,6 +2,8 @@
 
 const container = document.querySelector('.container');
 
+generatePixels(16);
+addDarkeningEffect();
 
 function generatePixels(gridDimension) {
     for (let i = 0; i < gridDimension ** 2; i++) {
@@ -10,24 +12,24 @@ function generatePixels(gridDimension) {
         pixel.style.width = ((1/gridDimension) * 100) + '%';
         container.append(pixel);
     }
-
-    const pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-    pixel.addEventListener('mouseenter', () => {
-        const currentPixelColor = pixel.style.backgroundColor;
-
-        if (!currentPixelColor) {
-            pixel.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-        } else if (currentPixelColor != 'rgb(0, 0, 0)') { // opacity is >= 0.1 and <= 0.9; Note: 'rgba(0, 0, 0, 1)' automatically becomes 'rgb(0, 0, 0)' 
-            const opacity = Number(currentPixelColor.slice(14, 17)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
-            pixel.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
-        }
-
-    });
-});
 }
 
-generatePixels(16);
+// Increase pixel opacity by 10% every time the mouse passes through
+function addDarkeningEffect() {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mouseenter', () => {
+            const currentPixelColor = pixel.style.backgroundColor;
+
+            if (!currentPixelColor) {
+                pixel.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+            } else if (currentPixelColor != 'rgb(0, 0, 0)') { // opacity is >= 0.1 and <= 0.9; Note: 'rgba(0, 0, 0, 1)' automatically becomes 'rgb(0, 0, 0)' 
+                const opacity = Number(currentPixelColor.slice(14, 17)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
+                pixel.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
+            }
+        });
+    });
+}
 
 
 const gridSizeForm = document.querySelector('#grid-size-form');
@@ -48,6 +50,7 @@ function clearGrid() {
 function redrawGrid(gridSize) {
     clearGrid();
     generatePixels(gridSize);
+    addDarkeningEffect();
 }
 
 
