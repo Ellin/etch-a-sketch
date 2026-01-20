@@ -9,14 +9,34 @@ function generatePixels(gridDimension) {
         pixel.style.width = ((1/gridDimension) * 100) + '%';
         container.append(pixel);
     }
-}
 
-generatePixels(16);
-
-const pixels = document.querySelectorAll('.pixel');
-
-pixels.forEach((pixel) => {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
     pixel.addEventListener('mouseenter', () => {
         pixel.classList.add('ink');
     });
 });
+}
+
+generatePixels(16);
+
+
+const gridSizeForm = document.querySelector('#grid-size-form');
+
+gridSizeForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevents automatic page refresh on form submission
+    const gridSizeEl = document.querySelector('#grid-size');
+    const gridSize = Number(gridSizeEl.value);
+
+    redrawGrid(gridSize);
+});
+
+
+function clearGrid() {
+    container.innerHTML = '';
+}
+
+function redrawGrid(gridSize) {
+    clearGrid();
+    generatePixels(gridSize);
+}
