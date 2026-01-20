@@ -25,7 +25,7 @@ function addDarkeningEffect() {
             if (!currentPixelColor) {
                 pixel.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             } else if (currentPixelColor != 'rgb(0, 0, 0)') { // opacity is >= 0.1 and <= 0.9; Note: 'rgba(0, 0, 0, 1)' automatically becomes 'rgb(0, 0, 0)' 
-                const opacity = Number(currentPixelColor.slice(14, 17)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
+                const opacity = Number(currentPixelColor.slice(-4, -1)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
                 pixel.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
             }
         });
