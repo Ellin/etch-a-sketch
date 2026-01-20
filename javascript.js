@@ -2,6 +2,7 @@
 
 const container = document.querySelector('.container');
 
+
 function generatePixels(gridDimension) {
     for (let i = 0; i < gridDimension ** 2; i++) {
         const pixel = document.createElement('div');
@@ -48,3 +49,25 @@ function redrawGrid(gridSize) {
     clearGrid();
     generatePixels(gridSize);
 }
+
+
+function removeGridLines() {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.style.border = 'none';
+    });
+}
+
+function addGridLines() {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.style.border = '1px solid black';
+    });
+}
+
+
+const removeGridLinesButton = document.querySelector('#remove-gridlines');
+removeGridLinesButton.addEventListener('click', removeGridLines);
+
+const addGridLinesButton = document.querySelector('#add-gridlines');
+addGridLinesButton.addEventListener('click', addGridLines)
