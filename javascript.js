@@ -66,8 +66,13 @@ function addGridLines() {
 }
 
 
-const removeGridLinesButton = document.querySelector('#remove-gridlines');
-removeGridLinesButton.addEventListener('click', removeGridLines);
+const gridlinesToggle = document.querySelector('#gridlines-toggle');
 
-const addGridLinesButton = document.querySelector('#add-gridlines');
-addGridLinesButton.addEventListener('click', addGridLines)
+gridlinesToggle.addEventListener('change', (e) => {
+    if (gridlinesToggle.checked) {
+        addGridLines();
+    } else {
+        console.log(gridlinesToggle.checked);
+        removeGridLines();
+    }
+});
