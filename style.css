@@ -7,3 +7,17 @@
 * {
     margin: 0;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 960px;
+    background-color: rgb(252, 252, 210);
+}
+
+.pixel {
+    aspect-ratio: 1; /* make it square */
+    background-color: pink;
+    border: 1px solid black;
+}
