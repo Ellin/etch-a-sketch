@@ -12,3 +12,11 @@ function generatePixels(gridDimension) {
 }
 
 generatePixels(16);
+
+const pixels = document.querySelectorAll('.pixel');
+
+pixels.forEach((pixel) => {
+    pixel.addEventListener('mouseenter', () => {
+        pixel.classList.add('ink');
+    });
+});
