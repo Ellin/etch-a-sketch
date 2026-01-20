@@ -20,7 +20,6 @@
 .pixel {
     aspect-ratio: 1; /* make it square */
     background-color: white;
-    border: 1px solid black;
 }
 
 

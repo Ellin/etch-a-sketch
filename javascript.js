@@ -3,6 +3,7 @@
 const container = document.querySelector('.container');
 
 generatePixels(16);
+addGridLines();
 addDarkeningEffect();
 
 function generatePixels(gridDimension) {
@@ -50,6 +51,7 @@ function clearGrid() {
 function redrawGrid(gridSize) {
     clearGrid();
     generatePixels(gridSize);
+    if (gridlinesToggle.checked) addGridLines();
     addDarkeningEffect();
 }
 
