@@ -8,11 +8,27 @@
     margin: 0;
 }
 
+header {
+    text-align: center;
+    background-color: rgb(255, 255, 208);
+    padding: 1em;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: rgb(212, 255, 212);
+    padding: 1em;
+}
+
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 960px;
+    width: clamp(300px, 100%, 85vh);
     background-color: rgb(252, 252, 210);
     border: 1px solid black;
 }
@@ -22,6 +38,9 @@
     background-color: white;
 }
 
+.controls {
+    background-color: pink;
+}
 
 /* --- Toggle Switch Component --- */
 .toggle {
