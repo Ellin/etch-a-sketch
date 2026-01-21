@@ -6,6 +6,12 @@ generatePixels(16);
 addGridLines();
 addDarkeningEffect();
 
+// Returns true if opaque (i.e. no alpha channel or alpha channel is 1)
+// Example inputs: 'rgb(0, 0, 0)', 'rgba(0, 0, 0, 1)',  'rgba(0,0,0,1)' (no spaces), 'rgba(0,0,0,0.1)'
+function isOpaque(rgbString) {
+    return (!rgbString.includes('rgba') || (rgbString.includes('rgba') &&  parseFloat(rgbString.split(',')[3]) === 1)); 
+}
+
 function generatePixels(gridDimension) {
     for (let i = 0; i < gridDimension ** 2; i++) {
         const pixel = document.createElement('div');
@@ -24,14 +30,13 @@ function addDarkeningEffect() {
 
             if (!currentPixelColor) {
                 pixel.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-            } else if (currentPixelColor != 'rgb(0, 0, 0)') { // opacity is >= 0.1 and <= 0.9; Note: 'rgba(0, 0, 0, 1)' automatically becomes 'rgb(0, 0, 0)' 
+            } else if (!isOpaque(currentPixelColor)) { // opacity is >= 0.1 and <= 0.9;
                 const opacity = Number(currentPixelColor.slice(-4, -1)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
                 pixel.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
             }
         });
     });
 }
-
 
 const gridSizeForm = document.querySelector('#grid-size-form');
 
