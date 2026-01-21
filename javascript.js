@@ -1,10 +1,31 @@
 "use strict"
-
+let inkMode = 'black';
 const container = document.querySelector('.container');
 
 generatePixels(16);
 addGridLines();
 addDarkeningEffect();
+
+
+function randomRgbInt() {
+    return Math.floor(Math.random() * 256); // Generate random number from 0-255
+}
+
+// Returns array of RGB values
+function rgbArray(inkMode) {
+    switch (inkMode) {
+        case 'black':
+            return [0, 0, 0];
+        case 'rainbow':
+            return [randomRgbInt(), randomRgbInt(), randomRgbInt()];
+    }
+}
+
+// Constructs rbga string from rgb array and alpha
+// Example: rgbaString([255, 255, 255], 0.5) -> 'rgba(255, 255, 255, 0.5)'
+function rgbaString(rgb, alpha) {
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
+}
 
 // Returns true if opaque (i.e. no alpha channel or alpha channel is 1)
 // Example inputs: 'rgb(0, 0, 0)', 'rgba(0, 0, 0, 1)',  'rgba(0,0,0,1)' (no spaces), 'rgba(0,0,0,0.1)'
@@ -29,10 +50,12 @@ function addDarkeningEffect() {
             const currentPixelColor = pixel.style.backgroundColor;
 
             if (!currentPixelColor) {
-                pixel.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 0.1);
             } else if (!isOpaque(currentPixelColor)) { // opacity is >= 0.1 and <= 0.9;
                 const opacity = Number(currentPixelColor.slice(-4, -1)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
-                pixel.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
+                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), opacity + 0.1);
+            } else {
+                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 1);
             }
         });
     });
@@ -86,3 +109,13 @@ gridlinesToggle.addEventListener('change', (e) => {
         removeGridLines();
     }
 });
+
+const rainbowToggle = document.querySelector('#rainbow-toggle');
+
+rainbowToggle.addEventListener('change', (e) => {
+    if (rainbowToggle.checked) {
+        inkMode = 'rainbow';
+    } else {
+        inkMode = 'black';
+    }
+})
