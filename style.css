@@ -39,10 +39,45 @@ header {
 }
 
 .controls {
+    width: 320px;
+    padding: 1em;
     background-color: pink;
+    font-size: 20px;
+}
+
+h2 {
+    margin-bottom: 0.5em;
+}
+
+#grid-size-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#grid-size-form input {
+    flex: 1;
+    height: 36px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+#grid-size-form button {
+    height: 36px;
+    font-size: 16px;
 }
 
 /* --- Toggle Switch Component --- */
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    /* background-color: yellow;
+    border: 1px solid red; */
+    margin: 5px 0;
+}
+
 .toggle {
   position: relative;
   display: inline-block;
