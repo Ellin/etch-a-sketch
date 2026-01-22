@@ -24,8 +24,15 @@ header {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
     padding: 1em;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 1000px;
 }
 
 .container {
@@ -43,7 +50,9 @@ header {
 }
 
 .controls {
-    width: 320px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: clamp(300px, 100%, 85vh);
     padding: 1em;
     background-color: pink;
     font-size: 20px;
