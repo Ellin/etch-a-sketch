@@ -41,13 +41,12 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     width: clamp(300px, 100%, 85vh);
-    background-color: rgb(252, 252, 210);
+    background-color: white;
     border: 1px solid black;
 }
 
 .pixel {
     aspect-ratio: 1; /* make it square */
-    background-color: white;
 }
 
 .controls {
