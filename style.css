@@ -86,6 +86,7 @@ h2 {
     margin-left: 10px;
     border-radius: 5px;
     padding: 0.5em;
+    border: 2px #111111 solid;
 }
 
 #grid-size-form button {
@@ -94,6 +95,7 @@ h2 {
     width: 100px;
     background-color: rgb(255, 125, 222);
     transition: 0.3s;
+    border: 2px #111111 solid;
     border-radius: 25px;
     padding: 0.5em;
 }
