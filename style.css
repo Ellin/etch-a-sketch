@@ -98,6 +98,8 @@ h2 {
     border: 2px #111111 solid;
     border-radius: 25px;
     padding: 0.5em;
+    line-height: 0; /* vertically center text */
+
 }
 
 #grid-size-form button:hover {
