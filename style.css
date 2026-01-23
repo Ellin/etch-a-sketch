@@ -11,6 +11,12 @@
 body {
     height: 100vh;
     background-color: rgb(212, 255, 212);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111111;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 header {
@@ -33,7 +39,7 @@ header {
     justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
-    width: 1000px;
+    width: 1100px;
 }
 
 .container {
@@ -53,9 +59,14 @@ header {
     flex-grow: 1;
     flex-shrink: 1;
     max-width: clamp(300px, 100%, 85vh);
-    padding: 1em;
-    background-color: pink;
+    padding: 1.5em;
+    background-color: rgb(255, 221, 242);
     font-size: 20px;
+    border-radius: 25px;
+    box-shadow: 
+      0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075);
 }
 
 h2 {
@@ -65,7 +76,7 @@ h2 {
 #grid-size-form {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 1em;
 }
 
 #grid-size-form input {
@@ -73,11 +84,22 @@ h2 {
     height: 36px;
     font-size: 16px;
     margin-left: 10px;
+    border-radius: 5px;
+    padding: 0.5em;
 }
 
 #grid-size-form button {
     height: 36px;
     font-size: 16px;
+    width: 100px;
+    background-color: rgb(255, 125, 222);
+    transition: 0.3s;
+    border-radius: 25px;
+    padding: 0.5em;
+}
+
+#grid-size-form button:hover {
+    background-color: rgb(255, 242, 125);
 }
 
 /* --- Toggle Switch Component --- */
@@ -88,7 +110,7 @@ h2 {
     gap: 1em;
     /* background-color: yellow;
     border: 1px solid red; */
-    margin: 5px 0;
+    margin: 1em 0;
 }
 
 .toggle {
@@ -113,7 +135,7 @@ h2 {
   right: 0;
   bottom: 0;
   background-color: #ccc; /* Unchecked color */
-  transition: .4s;
+  transition: .3s;
 }
 
 /* The knob */
@@ -125,15 +147,15 @@ h2 {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: .3s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3; /* Checked color */
+  background-color: rgb(255, 125, 222); /* Checked color */
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px rgb(255, 125, 222);
 }
 
 input:checked + .slider:before {
