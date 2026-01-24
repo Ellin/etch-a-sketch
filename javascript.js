@@ -4,7 +4,6 @@ const container = document.querySelector('.container');
 const gridSizeEl = document.querySelector('#grid-size');
 
 generatePixels(Number(gridSizeEl.value));
-addGridLines();
 addMouseHandlers();
 
 document.addEventListener("touchmove", touchHandling, {passive: false});
@@ -95,35 +94,13 @@ function clearGrid() {
 function redrawGrid(gridSize) {
     clearGrid();
     generatePixels(gridSize);
-    if (gridlinesToggle.checked) addGridLines();
     addMouseHandlers();
 }
-
-
-function removeGridLines() {
-    const pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-        pixel.style.border = 'none';
-    });
-}
-
-function addGridLines() {
-    const pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-        pixel.style.border = '1px solid black';
-    });
-}
-
 
 const gridlinesToggle = document.querySelector('#gridlines-toggle');
 
 gridlinesToggle.addEventListener('change', (e) => {
-    if (gridlinesToggle.checked) {
-        addGridLines();
-    } else {
-        console.log(gridlinesToggle.checked);
-        removeGridLines();
-    }
+    container.classList.toggle('gridlines');
 });
 
 const rainbowToggle = document.querySelector('#rainbow-toggle');

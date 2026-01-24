@@ -55,6 +55,10 @@ header {
     aspect-ratio: 1; /* make it square */
 }
 
+.gridlines .pixel {
+    border: 1px solid black;
+}
+
 .controls {
     flex-grow: 1;
     flex-shrink: 1;
