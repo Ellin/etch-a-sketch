@@ -4,6 +4,10 @@ In this project, I made an etch-a-sketch inspired pixel art app. Moving over the
 
 **View project:** https://ellin.github.io/pixel-sketch/
 
+## Project screenshots
+<img src="images/mobile-screenshot.png" alt="A screenshot of the Pixel Sketch app in mobile" width=35%>
+
+
 ## Skills practiced 
 Through this project, I practiced the following skills:
 - DOM manipulation
