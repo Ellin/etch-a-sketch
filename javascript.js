@@ -6,6 +6,19 @@ generatePixels(16);
 addGridLines();
 addMouseHandlers();
 
+document.addEventListener("touchmove", touchHandling, {passive: false});
+
+function touchHandling(e) {
+    e.preventDefault();
+    if (e.touches.length !== 1) return;
+    const touch = e.touches[0];
+    const touchedEl = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (touchedEl && touchedEl.classList.contains('pixel')) {
+        const pixel = touchedEl;
+        colorPixel(pixel);
+    }
+}
 
 function randomRgbInt() {
     return Math.floor(Math.random() * 256); // Generate random number from 0-255
@@ -123,4 +136,3 @@ rainbowToggle.addEventListener('change', (e) => {
         inkMode = 'black';
     }
 })
-
