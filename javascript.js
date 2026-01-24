@@ -4,7 +4,7 @@ const container = document.querySelector('.container');
 
 generatePixels(16);
 addGridLines();
-addDarkeningEffect();
+addMouseHandlers();
 
 
 function randomRgbInt() {
@@ -42,23 +42,27 @@ function generatePixels(gridDimension) {
     }
 }
 
-// Increase pixel opacity by 10% every time the mouse passes through
-function addDarkeningEffect() {
+function addMouseHandlers() {
     const pixels = document.querySelectorAll('.pixel');
     pixels.forEach((pixel) => {
         pixel.addEventListener('mouseenter', () => {
-            const currentPixelColor = pixel.style.backgroundColor;
-
-            if (!currentPixelColor) {
-                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 0.1);
-            } else if (!isOpaque(currentPixelColor)) { // opacity is >= 0.1 and <= 0.9;
-                const opacity = Number(currentPixelColor.slice(-4, -1)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
-                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), opacity + 0.1);
-            } else {
-                pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 1);
-            }
+            colorPixel(pixel);
         });
     });
+}
+
+// Add pixel color and increase opacity by 10% every time the mouse passes through
+function colorPixel(pixel) {
+    const currentPixelColor = pixel.style.backgroundColor;
+
+    if (!currentPixelColor) {
+        pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 0.1);
+    } else if (!isOpaque(currentPixelColor)) { // opacity is >= 0.1 and <= 0.9;
+        const opacity = Number(currentPixelColor.slice(-4, -1)); // gets opacity: 'rgba(0, 0, 0, 0.2)' --> 0.2
+        pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), opacity + 0.1);
+    } else {
+        pixel.style.backgroundColor = rgbaString(rgbArray(inkMode), 1);
+    }
 }
 
 const gridSizeForm = document.querySelector('#grid-size-form');
@@ -80,7 +84,7 @@ function redrawGrid(gridSize) {
     clearGrid();
     generatePixels(gridSize);
     if (gridlinesToggle.checked) addGridLines();
-    addDarkeningEffect();
+    addMouseHandlers();
 }
 
 
@@ -119,3 +123,4 @@ rainbowToggle.addEventListener('change', (e) => {
         inkMode = 'black';
     }
 })
+
