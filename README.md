@@ -1,8 +1,8 @@
-# etch-a-sketch
+# Pixel Sketch
 
 In this project, I made an etch-a-sketch inspired pixel art app. Moving over the pixel squares progressively darkens the ink by 10%. Works on both desktop and mobile.
 
-**View project:** https://ellin.github.io/etch-a-sketch/
+**View project:** https://ellin.github.io/pixel-sketch/
 
 ## Skills practiced 
 Through this project, I practiced the following skills:
