@@ -2,9 +2,30 @@
 let inkMode = 'black';
 const container = document.querySelector('.container');
 const gridSizeEl = document.querySelector('#grid-size');
+const gridSizeForm = document.querySelector('#grid-size-form');
+const gridlinesToggle = document.querySelector('#gridlines-toggle');
+const rainbowToggle = document.querySelector('#rainbow-toggle');
 
 generatePixels(Number(gridSizeEl.value));
 addMouseHandlers();
+
+gridSizeForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevents automatic page refresh on form submission
+    const gridSize = Number(gridSizeEl.value);
+    redrawGrid(gridSize);
+});
+
+gridlinesToggle.addEventListener('change', (e) => {
+    container.classList.toggle('gridlines');
+});
+
+rainbowToggle.addEventListener('change', (e) => {
+    if (rainbowToggle.checked) {
+        inkMode = 'rainbow';
+    } else {
+        inkMode = 'black';
+    }
+})
 
 document.addEventListener("touchmove", touchHandling, {passive: false});
 
@@ -18,6 +39,15 @@ function touchHandling(e) {
         const pixel = touchedEl;
         colorPixel(pixel);
     }
+}
+
+function addMouseHandlers() {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mouseenter', () => {
+            colorPixel(pixel);
+        });
+    });
 }
 
 function randomRgbInt() {
@@ -55,15 +85,6 @@ function generatePixels(gridDimension) {
     }
 }
 
-function addMouseHandlers() {
-    const pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-        pixel.addEventListener('mouseenter', () => {
-            colorPixel(pixel);
-        });
-    });
-}
-
 // Add pixel color and increase opacity by 10% every time the mouse passes through
 function colorPixel(pixel) {
     const currentPixelColor = pixel.style.backgroundColor;
@@ -78,15 +99,6 @@ function colorPixel(pixel) {
     }
 }
 
-const gridSizeForm = document.querySelector('#grid-size-form');
-
-gridSizeForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // prevents automatic page refresh on form submission
-    const gridSize = Number(gridSizeEl.value);
-    redrawGrid(gridSize);
-});
-
-
 function clearGrid() {
     container.innerHTML = '';
 }
@@ -96,19 +108,3 @@ function redrawGrid(gridSize) {
     generatePixels(gridSize);
     addMouseHandlers();
 }
-
-const gridlinesToggle = document.querySelector('#gridlines-toggle');
-
-gridlinesToggle.addEventListener('change', (e) => {
-    container.classList.toggle('gridlines');
-});
-
-const rainbowToggle = document.querySelector('#rainbow-toggle');
-
-rainbowToggle.addEventListener('change', (e) => {
-    if (rainbowToggle.checked) {
-        inkMode = 'rainbow';
-    } else {
-        inkMode = 'black';
-    }
-})
