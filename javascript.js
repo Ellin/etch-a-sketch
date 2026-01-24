@@ -32,8 +32,10 @@ container.addEventListener("touchmove", touchHandling, {passive: false});
 let lastTouched;
 
 function touchHandling(e) {
-    e.preventDefault();
     if (e.touches.length !== 1) return;
+
+    e.preventDefault(); // Prevent single point touchmove from triggering scrolling
+    
     const touch = e.touches[0];
     const touchedEl = document.elementFromPoint(touch.clientX, touch.clientY);
 
