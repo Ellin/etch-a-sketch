@@ -29,15 +29,17 @@ rainbowToggle.addEventListener('change', (e) => {
 
 container.addEventListener("touchmove", touchHandling, {passive: false});
 
+let lastTouched;
+
 function touchHandling(e) {
     e.preventDefault();
     if (e.touches.length !== 1) return;
     const touch = e.touches[0];
     const touchedEl = document.elementFromPoint(touch.clientX, touch.clientY);
 
-    if (touchedEl && touchedEl.classList.contains('pixel')) {
-        const pixel = touchedEl;
-        colorPixel(pixel);
+    if (touchedEl && touchedEl.classList.contains('pixel') && lastTouched !== touchedEl) {
+        colorPixel(touchedEl);
+        lastTouched = touchedEl;
     }
 }
 
