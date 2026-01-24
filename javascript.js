@@ -27,7 +27,7 @@ rainbowToggle.addEventListener('change', (e) => {
     }
 })
 
-document.addEventListener("touchmove", touchHandling, {passive: false});
+container.addEventListener("touchmove", touchHandling, {passive: false});
 
 function touchHandling(e) {
     e.preventDefault();
