@@ -39,7 +39,7 @@ function touchHandling(e) {
     const touch = e.touches[0];
     const touchedEl = document.elementFromPoint(touch.clientX, touch.clientY);
 
-    if (touchedEl && touchedEl.classList.contains('pixel') && lastTouched !== touchedEl) {
+    if (touchedEl?.classList.contains('pixel') && lastTouched !== touchedEl) {
         colorPixel(touchedEl);
         lastTouched = touchedEl;
     }
