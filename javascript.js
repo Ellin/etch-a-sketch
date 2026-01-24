@@ -1,8 +1,9 @@
 "use strict"
 let inkMode = 'black';
 const container = document.querySelector('.container');
+const gridSizeEl = document.querySelector('#grid-size');
 
-generatePixels(16);
+generatePixels(Number(gridSizeEl.value));
 addGridLines();
 addMouseHandlers();
 
@@ -82,9 +83,7 @@ const gridSizeForm = document.querySelector('#grid-size-form');
 
 gridSizeForm.addEventListener('submit', (e) => {
     e.preventDefault(); // prevents automatic page refresh on form submission
-    const gridSizeEl = document.querySelector('#grid-size');
     const gridSize = Number(gridSizeEl.value);
-
     redrawGrid(gridSize);
 });
 
